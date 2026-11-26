@@ -189,9 +189,6 @@
       return true;
     },
 
-    // =========================================================================
-    // Public Stats & Directory RPCs
-    // =========================================================================
     getPublicStats: async function () {
       try {
         return await restRequest("rpc/get_public_stats", { method: "POST", body: {} });
@@ -210,9 +207,6 @@
       }
     },
 
-    // =========================================================================
-    // Opportunities (public.opportunities)
-    // =========================================================================
     fetchOpportunities: async function (options) {
       options = options || {};
       try {
@@ -267,9 +261,6 @@
       return true;
     },
 
-    // =========================================================================
-    // Courses & Subscriptions (public.courses, public.course_subscriptions)
-    // =========================================================================
     fetchCourses: async function () {
       try {
         var rows = await restRequest("courses?select=*&order=created_at.desc");
@@ -355,9 +346,6 @@
       return true;
     },
 
-    // =========================================================================
-    // Partners (public.partners)
-    // =========================================================================
     fetchPartners: async function () {
       try {
         var rows = await restRequest("partners?select=*&order=created_at.desc");
@@ -396,9 +384,6 @@
       return true;
     },
 
-    // =========================================================================
-    // Community & Private Messages
-    // =========================================================================
     fetchCommunityMessages: async function (limit) {
       limit = limit || 100;
       try {
@@ -493,9 +478,6 @@
       });
     },
 
-    // =========================================================================
-    // Comments & Engagements (public.item_comments, public.item_engagements)
-    // =========================================================================
     fetchComments: async function (scope) {
       try {
         var ep = "item_comments?select=*&order=created_at.desc&limit=500";
@@ -556,9 +538,6 @@
       });
     },
 
-    // =========================================================================
-    // Personal Data, Submissions, Moderation, Reset Requests, Devices
-    // =========================================================================
     fetchPersonalData: async function () {
       if (!this.isAuthenticated()) return [];
       try {
@@ -679,7 +658,6 @@
       return true;
     },
 
-    // Admin Users fetch (non-sensitive columns only)
     fetchUsers: async function () {
       if (!this.isAuthenticated()) return [];
       try {
@@ -692,9 +670,6 @@
       }
     },
 
-    // =========================================================================
-    // Site Store (public.site_store)
-    // =========================================================================
     fetchStore: async function () {
       try {
         var rows = await restRequest("site_store?select=key,value");
@@ -724,9 +699,6 @@
       return true;
     },
 
-    // =========================================================================
-    // Storage Uploads & Signed URLs
-    // =========================================================================
     uploadFile: async function (bucket, path, fileOrBlob) {
       if (!this.client) throw new Error("Supabase SDK client not initialized");
       var res = await this.client.storage

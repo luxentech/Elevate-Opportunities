@@ -2,6 +2,15 @@
   "cleanUrls": true,
   "headers": [
     {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://accounts.google.com https://cdnjs.cloudflare.com; connect-src 'self' https://uhjstvlhlkcewmquhrnj.supabase.co wss://uhjstvlhlkcewmquhrnj.supabase.co; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; frame-ancestors 'none'" }
+      ]
+    },
+    {
       "source": "/(.*)\\.css",
       "headers": [
         { "key": "Content-Type", "value": "text/css; charset=utf-8" },
